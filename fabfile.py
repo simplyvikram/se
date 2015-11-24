@@ -54,6 +54,7 @@ def install_packages():
     there
     """
     local('pip install virtualenv')
+    local('pip install fabric')
     with cd(current_dir):
         local('virtualenv {0}'.format(virtual_env_name))
         with _source_virtualenv():

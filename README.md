@@ -4,7 +4,7 @@ Basic solution to upload expense reports, and calculate month by month expenses 
 For now, its not as tightly packaged as I would like it to be. Using fabric to set up a few things and to run server. Ideally we would want something like a vagrant box to be provisioned to have all the dependencies neatly packagaed.
 
 Pre reququisites:
-* Postgres needs to be running before the app is run
+* Postgres needs to be installed and running before the app is run.
 * python 2.7 needs to be installed
 
 
