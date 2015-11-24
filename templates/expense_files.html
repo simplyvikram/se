@@ -1,0 +1,37 @@
+<html>
+<head>
+    {{ JSGlue.include() }}
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+        var endpoint = 'expense_files/all';
+        $.getJSON(endpoint, function(expense_files){
+
+            items = [];
+            for(var i = 0; i < expense_files.length; i++) {
+                ef = expense_files[i];
+                s = '<li>';
+                s += '  filename:' + ef.filename;
+                s += '  creation_timestamp: ' + ef.creation_timestamp;
+                s += '  id: ' + ef.id;
+
+                _url = Flask.url_for("basic_endoints.calculate_expenses",
+                        {"expense_file_id": ef.id});
+
+                s += '  <a href="' + _url +'">Calculate expenses for file</a>';
+                s += '</li>';
+                items.push(s);
+            }
+            $("#result").html(items.join(""));
+        });
+    });
+</script>
+<body>
+<h3>All uploaded csv expense files</h3>
+<div id="result"></div>
+</body>
+</html>
